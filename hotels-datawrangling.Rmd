@@ -100,8 +100,7 @@ It also shouldn't repeat a previous label, otherwise R Markdown will give you an
 
 ```{r adult-freq}
 hotels %>%
-  select(adults) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
 ### Exercise 6.
@@ -113,16 +112,14 @@ What does this reveal about the surprising results you spotted in the previous e
 
 ```{r adult-freq-canceled}
 hotels %>%
-  select(adults, is_canceled) %>%
   filter(is_canceled == 1) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
 ```{r adult-freq-notcanceled}
 hotels %>%
-  select(adults, is_canceled) %>%
   filter(is_canceled == 0) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
 

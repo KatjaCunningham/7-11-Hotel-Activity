@@ -250,24 +250,26 @@ Markdown will give you an error about repeated R chunk labels.
 
 ``` r
 hotels %>%
-  select(adults) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
-    ## # A tibble: 119,390 × 1
-    ##    adults
-    ##     <dbl>
-    ##  1     55
-    ##  2     50
-    ##  3     40
-    ##  4     27
-    ##  5     27
-    ##  6     26
-    ##  7     26
-    ##  8     26
-    ##  9     26
-    ## 10     26
-    ## # … with 119,380 more rows
+    ## # A tibble: 14 × 2
+    ##    adults     n
+    ##     <dbl> <int>
+    ##  1      2 89680
+    ##  2      1 23027
+    ##  3      3  6202
+    ##  4      0   403
+    ##  5      4    62
+    ##  6     26     5
+    ##  7      5     2
+    ##  8     20     2
+    ##  9     27     2
+    ## 10      6     1
+    ## 11     10     1
+    ## 12     40     1
+    ## 13     50     1
+    ## 14     55     1
 
 ### Exercise 6.
 
@@ -281,47 +283,42 @@ exercise?
 
 ``` r
 hotels %>%
-  select(adults, is_canceled) %>%
   filter(is_canceled == 1) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
-    ## # A tibble: 44,224 × 2
-    ##    adults is_canceled
-    ##     <dbl>       <dbl>
-    ##  1     55           1
-    ##  2     50           1
-    ##  3     40           1
-    ##  4     27           1
-    ##  5     27           1
-    ##  6     26           1
-    ##  7     26           1
-    ##  8     26           1
-    ##  9     26           1
-    ## 10     26           1
-    ## # … with 44,214 more rows
+    ## # A tibble: 14 × 2
+    ##    adults     n
+    ##     <dbl> <int>
+    ##  1      2 35258
+    ##  2      1  6674
+    ##  3      3  2151
+    ##  4      0   109
+    ##  5      4    16
+    ##  6     26     5
+    ##  7      5     2
+    ##  8     20     2
+    ##  9     27     2
+    ## 10      6     1
+    ## 11     10     1
+    ## 12     40     1
+    ## 13     50     1
+    ## 14     55     1
 
 ``` r
 hotels %>%
-  select(adults, is_canceled) %>%
   filter(is_canceled == 0) %>%
-  arrange(desc(adults))
+  count(adults, sort = TRUE)
 ```
 
-    ## # A tibble: 75,166 × 2
-    ##    adults is_canceled
-    ##     <dbl>       <dbl>
-    ##  1      4           0
-    ##  2      4           0
-    ##  3      4           0
-    ##  4      4           0
-    ##  5      4           0
-    ##  6      4           0
-    ##  7      4           0
-    ##  8      4           0
-    ##  9      4           0
-    ## 10      4           0
-    ## # … with 75,156 more rows
+    ## # A tibble: 5 × 2
+    ##   adults     n
+    ##    <dbl> <int>
+    ## 1      2 54422
+    ## 2      1 16353
+    ## 3      3  4051
+    ## 4      0   294
+    ## 5      4    46
 
 ### Exercise 7.
 
